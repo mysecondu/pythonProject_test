@@ -4,6 +4,8 @@ from game.game import *
 from game.options import Menu
 from time import *
 from game.DumbBot import *
+from game.players import *
+
 
 pg.init()
 
