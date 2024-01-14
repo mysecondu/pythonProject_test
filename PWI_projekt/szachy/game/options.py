@@ -20,6 +20,7 @@ class Menu:
         self.selected_option = None
 
     def draw_menu(self):
+        #Główne menu, zawierające nagłówek "Chess Game" oraz opcje gry: "Player vs Player", "Player vs Bot", "Bot vs Bot"
         self.screen.fill((0, 0, 0))  # Black background
 
         heading_rect = self.heading.get_rect(center=(self.screen_width // 2, 80))
@@ -33,7 +34,8 @@ class Menu:
         pg.display.flip()
 
     def draw_color_selection(self):
-        self.screen.fill((0, 0, 0))  # Black background
+        #Rysuje ekran wyboru koloru dla gracza (biały lub czarny) w przypadku wybrania opcji "Player vs Bot"
+        self.screen.fill((0, 0, 0))
 
         heading_rect = self.heading.get_rect(center=(self.screen_width // 2, 80))
         self.screen.blit(self.heading, heading_rect)
@@ -49,6 +51,7 @@ class Menu:
         pg.display.flip()
 
     def draw_bot_selection(self):
+        #Rysuje ekran wyboru poziomu trudności - Dumb Bot lub Smart Bot w przypadku wybrania opcji "Player vs Bot" i wyboru koloru
         self.screen.fill((0, 0, 0))  # Black background
 
         heading_rect = self.heading.get_rect(center=(self.screen_width // 2, 80))
@@ -86,6 +89,7 @@ class Menu:
             self.clock.tick(30)
 
     def get_color_selection(self):
+        #Funkcja obsługująca wybór koloru przez gracza. Oczekuje na kliknięcie myszą i zwraca informacje o wybranym kolorze
         while True:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -107,6 +111,7 @@ class Menu:
             self.clock.tick(30)
 
     def get_bot_selection(self):
+        #Funkcja obsługująca wybór poziomu trudności bota przez gracza. Oczekuje na kliknięcie myszą i zwraca informacje o wybranym bocie
         while True:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
