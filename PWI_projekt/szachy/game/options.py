@@ -1,6 +1,6 @@
 import pygame as pg
 import sys
-
+#komentarz
 class Menu:
     def __init__(self):
         pg.init()
