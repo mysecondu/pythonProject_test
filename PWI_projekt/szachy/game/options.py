@@ -21,7 +21,7 @@ class Menu:
 
     def draw_menu(self):
         #Główne menu, zawierające nagłówek "Chess Game" oraz opcje gry: "Player vs Player", "Player vs Bot", "Bot vs Bot"
-        self.screen.fill((0, 0, 0))  # Black background
+        self.screen.fill((0, 0, 0))
 
         heading_rect = self.heading.get_rect(center=(self.screen_width // 2, 80))
         self.screen.blit(self.heading, heading_rect)
@@ -52,7 +52,7 @@ class Menu:
 
     def draw_bot_selection(self):
         #Rysuje ekran wyboru poziomu trudności - Dumb Bot lub Smart Bot w przypadku wybrania opcji "Player vs Bot" i wyboru koloru
-        self.screen.fill((0, 0, 0))  # Black background
+        self.screen.fill((0, 0, 0))
 
         heading_rect = self.heading.get_rect(center=(self.screen_width // 2, 80))
         self.screen.blit(self.heading, heading_rect)
