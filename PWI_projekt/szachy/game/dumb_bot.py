@@ -1,2 +1,1 @@
-#komentarz
 print("coś nowego")
