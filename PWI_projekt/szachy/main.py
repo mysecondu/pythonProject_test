@@ -39,13 +39,26 @@ def main():
 
 
 
+    elif selected_option == "Bot vs Bot":
+        print(selected_option)
 
-    elif (selected_option == "Bot vs Bot" or selected_option == "Player vs Bot - White - Dumb Bot"      #Nie działa dla tych opcji
+
+    elif "Player vs Bot" in selected_option:
+        print(selected_option)
+
+
+
+
+
+
+
+
+    """elif (selected_option == "Bot vs Bot" or selected_option == "Player vs Bot - White - Dumb Bot"      #Nie działa dla tych opcji
         or selected_option == "Player vs Bot - White - Smart Bot"
         or selected_option == "Player vs Bot - Black - Dumb Bot"
         or selected_option == "Player vs Bot - White - Dumb Bot"):
 
-        print(selected_option)
+        print(selected_option)"""
 
 if __name__ == "__main__":
     main()
