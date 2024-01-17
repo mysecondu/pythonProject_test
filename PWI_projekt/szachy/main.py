@@ -48,11 +48,15 @@ def main():
 
 
     elif "Player vs Bot" in selected_option:   ##only for player white "w"
-        i = 0
 
-        the_dumb_bot = DumbBot("b", board)
+        if "White" in selected_option:
+            the_dumb_bot = DumbBot("b", board)
+
+        else:
+            the_dumb_bot = DumbBot("w", board)
+
+
         while True:
-            i += 1
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     pg.quit()
@@ -61,7 +65,7 @@ def main():
 
 
 
-            if board.turn == "b":
+            if board.turn == the_dumb_bot.color:
                 bot_move = the_dumb_bot.get_random_move(board.board)
 
                 if bot_move != None:
