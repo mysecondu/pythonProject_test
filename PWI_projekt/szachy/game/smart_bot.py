@@ -50,3 +50,30 @@ class SmartBot:
                             valid_moves.append(((i, j), move))   #old, new
         return valid_moves
 
+
+
+
+
+    def all_attack_moves(self, board):
+        valid_moves = []
+
+        for i in range(8):
+            for j in range(8):
+                piece = board[i][j]
+                #print("piece", piece)
+                if piece != 0 and piece.color == self.color:
+                    if isinstance(piece, King):
+                        piece.possible_moves_f(board, self.w_attacked, self.b_attacked)
+                        possible_moves_db = piece.possible_moves
+
+                    else:
+                        piece.possible_moves_f(board)
+                        possible_moves_db = piece.possible_moves
+
+
+
+                    # Check if possible_moves is None
+                    if possible_moves_db is not None and possible_moves_db is not []:
+                        for move in possible_moves_db:
+                            valid_moves.append(((i, j), move))   #old, new
+        return valid_moves
