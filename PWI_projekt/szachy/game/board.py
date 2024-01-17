@@ -221,23 +221,16 @@ class ChessBoard:
 
     def move_piece_bot(self, start_pos, end_pos):          #new for bots
 
-        if pg.mouse.get_pressed()[0] is False:
-            ChessBoard.mouse_hold = False
-
-        if pg.mouse.get_pressed()[0] and ChessBoard.mouse_hold is False:
-            mouse_pos_i = pg.mouse.get_pos()[1] // 100
-            mouse_pos_j = pg.mouse.get_pos()[0] // 100
-            self.piece_to_move = (ChessBoard.board[mouse_pos_i][mouse_pos_j], mouse_pos_i, mouse_pos_j)
-            ChessBoard.mouse_hold = True
 
 
-        if self.piece_to_move is not None and self.piece_to_move[0] != 0 and ChessBoard.mouse_hold is False and self.piece_to_move[0].color == ChessBoard.turn:       # zmiana pozycji figur
-            piece_to_move = self.piece_to_move[0]
-            old_pos_i = self.piece_to_move[1]
-            old_pos_j = self.piece_to_move[2]
-            new_pos_i = pg.mouse.get_pos()[1]//100
-            new_pos_j = pg.mouse.get_pos()[0]//100
+        old_pos_i, old_pos_j = start_pos
+        new_pos_i, new_pos_j = end_pos
+        self.piece_to_move = (ChessBoard.board[old_pos_i][old_pos_j], old_pos_i, old_pos_j)
 
+
+
+        if self.piece_to_move is not None and self.piece_to_move[0] != 0 and self.piece_to_move[0].color == ChessBoard.turn:       # zmiana pozycji figur
+            piece_to_move = self.piece_to_move[0]     ####??
             new_pos = np.array([new_pos_i, new_pos_j])
 
             if isinstance(piece_to_move, King):

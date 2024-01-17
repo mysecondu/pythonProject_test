@@ -47,10 +47,10 @@ def main():
 
 
 
-    elif "Player vs Bot" in selected_option:
+    elif "Player vs Bot" in selected_option:   ##only for player white "w"
         i = 0
-        # Initialize DumbBot
-        dumb_bot = DumbBot("b", board)
+
+        the_dumb_bot = DumbBot("b", board)
         while True:
             i += 1
             for event in pg.event.get():
@@ -58,32 +58,36 @@ def main():
                     pg.quit()
                     break
 
-            screen.fill((0, 0, 0))
-            board.draw_board()
-            highlight(screen)
+
+
 
             if board.turn == "b":
-                bot_move = dumb_bot.get_random_move(board.board)
-                print("bot move",bot_move)
+                bot_move = the_dumb_bot.get_random_move(board.board)
 
                 if bot_move != None:
+                    screen.fill((0, 0, 0))
+                    board.draw_board()
+
                     start_pos, end_pos = bot_move
-                    piece = board.board[start_pos[0]][start_pos[1]]
-                    piece.move_to(board.board, end_pos[0], end_pos[1])
-                    board.turn = "w"
-                    print(board.turn)
+                    print(start_pos)
+                    print(end_pos)
 
+                    board.move_piece_bot(start_pos, end_pos)
+                    board.draw_pieces()
 
-                print("bot", i)
 
 
 
             # Player's turn
             else:
+                screen.fill((0, 0, 0))
+                board.draw_board()
+                highlight(screen)
                 board.move_piece()
                 board.draw_pieces()
 
-            pg.display.flip()
+                pg.display.flip()
+
 
 
 
