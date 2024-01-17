@@ -5,6 +5,7 @@ from game.game import *
 from game.options import *
 from time import *
 from game.dumb_bot import *
+from game.smart_bot import *
 
 
 pg.init()
@@ -49,11 +50,20 @@ def main():
 
     elif "Player vs Bot" in selected_option:   ##only for player white "w"
 
-        if "White" in selected_option:
-            the_dumb_bot = DumbBot("b", board)
+        if "Dumb" in selected_option:
+
+                if "White" in selected_option:
+                    bot = DumbBot("b", board)
+
+                else:
+                    bot = DumbBot("w", board)
 
         else:
-            the_dumb_bot = DumbBot("w", board)
+            if "White" in selected_option:
+                bot = SmartBot("b", board)
+
+            else:
+                bot = SmartBot("w", board)
 
 
         while True:
@@ -65,8 +75,14 @@ def main():
 
 
 
-            if board.turn == the_dumb_bot.color:
-                bot_move = the_dumb_bot.get_random_move(board.board)
+            if board.turn == bot.color:
+                if "Dumb" in selected_option:
+                    bot_move = bot.get_random_move(board.board)
+
+                elif "Smart" in selected_option:
+                    bot_move = bot.get_smart_move(board.board)
+
+
 
                 if bot_move != None:
                     screen.fill((0, 0, 0))
