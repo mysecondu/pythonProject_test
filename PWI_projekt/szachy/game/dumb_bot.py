@@ -16,8 +16,8 @@ class DumbBot:
     def __init__(self, color, board):
         self.color = color
 
-        self.w_attacked = board.w_attacked  # Initialize w_attacked
-        self.b_attacked = board.b_attacked  # Initialize b_attacked
+        self.w_attacked = board.w_attacked
+        self.b_attacked = board.b_attacked
 
     def get_random_move(self, board):
         valid_moves = self.get_all_valid_moves(board)
@@ -32,7 +32,6 @@ class DumbBot:
         for i in range(8):
             for j in range(8):
                 piece = board[i][j]
-                #print("piece", piece)
                 if piece != 0 and piece.color == self.color:
                     if isinstance(piece, King):
                         piece.possible_moves_f(board, self.w_attacked, self.b_attacked)
@@ -42,11 +41,8 @@ class DumbBot:
                         piece.possible_moves_f(board)
                         possible_moves_db = piece.possible_moves
 
-
-
-                    # Check if possible_moves is None
                     if possible_moves_db is not None and possible_moves_db is not []:
                         for move in possible_moves_db:
-                            valid_moves.append(((i, j), move))   #old, new
+                            valid_moves.append(((i, j), move))   #old position, new position
         return valid_moves
 

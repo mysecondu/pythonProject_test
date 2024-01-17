@@ -21,9 +21,9 @@ def main():
     brown = (205, 133, 63)
     board = ChessBoard(screen_size, (white, brown), screen)
 
+
+
     if selected_option == "Player vs Player":
-
-
 
         while True:
             for event in pg.event.get():
@@ -41,8 +41,7 @@ def main():
 
 
 
-    elif selected_option == "Bot vs Bot":
-        print(selected_option)
+    elif selected_option == "Bot vs Bot":               #DumbBot przeciwko SmartBot
         bot_white = SmartBot("w", board)
         bot_black = DumbBot("b", board)
 
@@ -62,14 +61,12 @@ def main():
                 board.draw_board()
 
                 start_pos, end_pos = bot_move
-                print(start_pos)
-                print(end_pos)
 
                 board.move_piece_bot(start_pos, end_pos)
                 board.draw_pieces()
 
                 pg.display.flip()
-                sleep(0.5)
+                sleep(1)
 
 
 
@@ -78,7 +75,7 @@ def main():
 
 
 
-    elif "Player vs Bot" in selected_option:   ##only for player white "w"
+    elif "Player vs Bot" in selected_option:
 
         if "Dumb" in selected_option:
 
@@ -104,7 +101,7 @@ def main():
 
 
 
-
+            # Bot's turn
             if board.turn == bot.color:
                 if "Dumb" in selected_option:
                     bot_move = bot.get_random_move(board.board)
@@ -115,12 +112,11 @@ def main():
 
 
                 if bot_move != None:
+                    sleep(0.6)          #Żeby było widać skąd dokąd bot się rusza
                     screen.fill((0, 0, 0))
                     board.draw_board()
 
                     start_pos, end_pos = bot_move
-                    print(start_pos)
-                    print(end_pos)
 
                     board.move_piece_bot(start_pos, end_pos)
                     board.draw_pieces()
@@ -137,10 +133,6 @@ def main():
                 board.draw_pieces()
 
                 pg.display.flip()
-
-
-
-
 
 
 if __name__ == "__main__":

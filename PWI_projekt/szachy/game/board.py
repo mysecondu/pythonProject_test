@@ -219,7 +219,7 @@ class ChessBoard:
 
 
 
-    def move_piece_bot(self, start_pos, end_pos):          #new for bots
+    def move_piece_bot(self, start_pos, end_pos):          #move defined for all bots
 
 
 
@@ -230,7 +230,7 @@ class ChessBoard:
 
 
         if self.piece_to_move is not None and self.piece_to_move[0] != 0 and self.piece_to_move[0].color == ChessBoard.turn:       # zmiana pozycji figur
-            piece_to_move = self.piece_to_move[0]     ####??
+            piece_to_move = self.piece_to_move[0]
             new_pos = np.array([new_pos_i, new_pos_j])
 
             if isinstance(piece_to_move, King):
@@ -241,7 +241,7 @@ class ChessBoard:
 
             a = 0
             for pos in piece_to_move.possible_moves:
-                if pos[0] == new_pos[0] and pos[1] == new_pos[1]:       # sprawdzainie czy to dobry ruch
+                if pos[0] == new_pos[0] and pos[1] == new_pos[1]:       # sprawdzenie czy to dobry ruch
                     a = 1
                     break
             if a == 0:

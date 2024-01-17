@@ -22,14 +22,12 @@ class SmartBot:
     def get_smart_move(self, board):
         attack_moves = self.all_attack_moves(board)
 
-        if attack_moves != None and attack_moves != []:
-            print("attack")
+        if attack_moves != None and attack_moves != []:     #The smart bot attacks if he can
             return random.choice(attack_moves)
 
 
         valid_moves = self.get_all_valid_moves(board)
         if valid_moves:
-            print("booooooring")
             return random.choice(valid_moves)
 
         return None
@@ -55,7 +53,7 @@ class SmartBot:
                     # Check if possible_moves is None
                     if possible_moves_db is not None and possible_moves_db is not []:
                         for move in possible_moves_db:
-                            valid_moves.append(((i, j), move))   #old, new
+                            valid_moves.append(((i, j), move))   #old position, new position
         return valid_moves
 
 
@@ -68,10 +66,9 @@ class SmartBot:
         for i in range(8):
             for j in range(8):
                 piece = board[i][j]
-                #print("piece", piece)
                 if piece != 0 and piece.color == self.color:
                     if isinstance(piece, King):
-                        pass        #he does not have attacks
+                        pass        #The King does not have attacks
 
                     else:
                         piece.attacks(board)
@@ -82,6 +79,6 @@ class SmartBot:
                     if possible_attacks_sb is not None and possible_attacks_sb is not []:
                         for move in possible_attacks_sb:
                             target_piece = board[move[0]][move[1]]
-                            if target_piece != 0 and target_piece.color != self.color:
-                                valid_moves.append(((i, j), move))   #old, new
+                            if target_piece != 0 and target_piece.color != self.color:      #check if there is a piece of the other color
+                                valid_moves.append(((i, j), move))   #old position, new position
         return valid_moves
