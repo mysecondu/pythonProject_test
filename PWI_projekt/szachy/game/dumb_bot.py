@@ -47,6 +47,6 @@ class DumbBot:
                     # Check if possible_moves is None
                     if possible_moves_db is not None and possible_moves_db is not []:
                         for move in possible_moves_db:
-                            valid_moves.append(((i, j), move))
+                            valid_moves.append(((i, j), move))   #old, new
         return valid_moves
 
