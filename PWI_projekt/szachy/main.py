@@ -66,7 +66,7 @@ def main():
                 board.draw_pieces()
 
                 pg.display.flip()
-                sleep(1)
+                sleep(0.8)
 
 
 
@@ -112,7 +112,7 @@ def main():
 
 
                 if bot_move != None:
-                    sleep(0.6)          #Żeby było widać skąd dokąd bot się rusza
+                    sleep(0.4)          #Żeby było widać skąd bot się rusza
                     screen.fill((0, 0, 0))
                     board.draw_board()
 
