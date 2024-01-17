@@ -43,11 +43,10 @@ class DumbBot:
                         possible_moves_db = piece.possible_moves
 
 
-                    print(piece, "valid moves", possible_moves_db)
 
                     # Check if possible_moves is None
                     if possible_moves_db is not None and possible_moves_db is not []:
                         for move in possible_moves_db:
                             valid_moves.append(((i, j), move))
-        print("valid moves:", valid_moves)
         return valid_moves
+
