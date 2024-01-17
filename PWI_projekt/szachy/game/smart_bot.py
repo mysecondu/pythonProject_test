@@ -20,11 +20,20 @@ class SmartBot:
         self.b_attacked = board.b_attacked  # Initialize b_attacked
 
     def get_smart_move(self, board):
-        valid_moves = self.get_all_valid_moves(board)
-        if not valid_moves:
-            return None
+        attack_moves = self.all_attack_moves(board)
 
-        return random.choice(valid_moves)
+        if attack_moves != None and attack_moves != []:
+            print("attack")
+            return random.choice(attack_moves)
+
+
+        valid_moves = self.get_all_valid_moves(board)
+        if valid_moves:
+            print("booooooring")
+            return random.choice(valid_moves)
+
+        return None
+
 
     def get_all_valid_moves(self, board):
         valid_moves = []
@@ -32,7 +41,6 @@ class SmartBot:
         for i in range(8):
             for j in range(8):
                 piece = board[i][j]
-                #print("piece", piece)
                 if piece != 0 and piece.color == self.color:
                     if isinstance(piece, King):
                         piece.possible_moves_f(board, self.w_attacked, self.b_attacked)
@@ -63,17 +71,17 @@ class SmartBot:
                 #print("piece", piece)
                 if piece != 0 and piece.color == self.color:
                     if isinstance(piece, King):
-                        piece.possible_moves_f(board, self.w_attacked, self.b_attacked)
-                        possible_moves_db = piece.possible_moves
+                        pass        #he does not have attacks
 
                     else:
-                        piece.possible_moves_f(board)
-                        possible_moves_db = piece.possible_moves
+                        piece.attacks(board)
+                        possible_attacks_sb = piece.possible_attacks
 
 
 
-                    # Check if possible_moves is None
-                    if possible_moves_db is not None and possible_moves_db is not []:
-                        for move in possible_moves_db:
-                            valid_moves.append(((i, j), move))   #old, new
+                    if possible_attacks_sb is not None and possible_attacks_sb is not []:
+                        for move in possible_attacks_sb:
+                            target_piece = board[move[0]][move[1]]
+                            if target_piece != 0 and target_piece.color != self.color:
+                                valid_moves.append(((i, j), move))   #old, new
         return valid_moves

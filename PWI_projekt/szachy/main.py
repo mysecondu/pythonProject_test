@@ -43,6 +43,36 @@ def main():
 
     elif selected_option == "Bot vs Bot":
         print(selected_option)
+        bot_white = SmartBot("w", board)
+        bot_black = DumbBot("b", board)
+
+        while True:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    break
+
+            if board.turn == "w":
+                bot_move = bot_white.get_smart_move(board.board)
+            else:
+                bot_move = bot_black.get_random_move(board.board)
+
+            if bot_move is not None:
+                screen.fill((0, 0, 0))
+                board.draw_board()
+
+                start_pos, end_pos = bot_move
+                print(start_pos)
+                print(end_pos)
+
+                board.move_piece_bot(start_pos, end_pos)
+                board.draw_pieces()
+
+                pg.display.flip()
+                sleep(0.5)
+
+
+
 
 
 
@@ -112,18 +142,6 @@ def main():
 
 
 
-
-
-
-
-
-
-    """elif (selected_option == "Bot vs Bot" or selected_option == "Player vs Bot - White - Dumb Bot"      #Nie działa dla tych opcji
-        or selected_option == "Player vs Bot - White - Smart Bot"
-        or selected_option == "Player vs Bot - Black - Dumb Bot"
-        or selected_option == "Player vs Bot - White - Dumb Bot"):
-
-        print(selected_option)"""
 
 if __name__ == "__main__":
     main()
