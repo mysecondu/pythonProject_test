@@ -68,6 +68,7 @@ class SmartBot:
                 piece = board[i][j]
                 if piece != 0 and piece.color == self.color:
                     if isinstance(piece, King):
+                        possible_attacks_sb = None
                         pass        #The King does not have attacks
 
                     else:
